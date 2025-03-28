@@ -67,17 +67,17 @@ You can install Postman via this website: https://www.postman.com/downloads/
     -   [x] Commit: `Implement add function in Notification repository.`
     -   [x] Commit: `Implement list_all_as_string function in Notification repository.`
     -   [x] Write answers of your learning module's "Reflection Subscriber-1" questions in this README.
--   **STAGE 3: Implement services and controllers**
-    -   [ ] Commit: `Create Notification service struct skeleton.`
-    -   [ ] Commit: `Implement subscribe function in Notification service.`
-    -   [ ] Commit: `Implement subscribe function in Notification controller.`
-    -   [ ] Commit: `Implement unsubscribe function in Notification service.`
-    -   [ ] Commit: `Implement unsubscribe function in Notification controller.`
-    -   [ ] Commit: `Implement receive_notification function in Notification service.`
-    -   [ ] Commit: `Implement receive function in Notification controller.`
-    -   [ ] Commit: `Implement list_messages function in Notification service.`
-    -   [ ] Commit: `Implement list function in Notification controller.`
-    -   [ ] Write answers of your learning module's "Reflection Subscriber-2" questions in this README.
+-   **STAGE 2: Implement services and controllers**
+    -   [x] Commit: `Create Notification service struct skeleton.`
+    -   [x] Commit: `Implement subscribe function in Notification service.`
+    -   [x] Commit: `Implement subscribe function in Notification controller.`
+    -   [x] Commit: `Implement unsubscribe function in Notification service.`
+    -   [x] Commit: `Implement unsubscribe function in Notification controller.`
+    -   [x] Commit: `Implement receive_notification function in Notification service.`
+    -   [x] Commit: `Implement receive function in Notification controller.`
+    -   [x] Commit: `Implement list_messages function in Notification service.`
+    -   [x] Commit: `Implement list function in Notification controller.`
+    -   [x] Write answers of your learning module's "Reflection Subscriber-2" questions in this README.
 
 ## Your Reflections
 This is the place for you to write reflections:
@@ -95,3 +95,22 @@ Kita menggunakan RwLock<> untuk menyinkronkan akses ke Vec notifikasi karena str
 Pada tutorial ini, kita menggunakan pustaka eksternal lazy_static untuk mendefinisikan Vec dan DashMap sebagai variabel statis karena Rust tidak mendukung variabel statis yang dapat diubah secara langsung seperti di Java. Di Java, kita bisa memodifikasi konten variabel statis melalui fungsi statis, namun Rust mengharuskan pendekatan yang lebih aman dan eksplisit. Dengan menggunakan lazy_static, kita dapat membuat variabel statis yang aman diakses oleh banyak thread sekaligus tanpa mengorbankan aturan ownership dan borrowing Rust. Pendekatan ini memastikan tidak adanya kondisi balapan (race condition) dalam pengelolaan data statis yang dapat diakses oleh beberapa thread.
 
 #### Reflection Subscriber-2
+**1. Have you explored things outside of the steps in the tutorial, for example: src/lib.rs? If not, explain why you did not do so. If yes, explain things that you have learned from those other parts of code.**
+
+Ya, saya mengeksplorasi file src/lib.rs dan menemukan bahwa file ini berfungsi sebagai modul utama dengan helper functions untuk memuat konfigurasi dari .env dan penanganan kesalahan. Saya juga mempelajari penggunaan RwLock<> dan Mutex<> untuk mengelola akses data secara bersamaan.
+
+**2. Since you have completed the tutorial by now and have tried to test your notification system by spawning multiple instances of Receiver, explain how Observer pattern eases you to plug in more subscribers. How about spawning more than one instance of Main app, will it still be easy enough to add to the system?.**
+
+Observer Pattern mempermudah penambahan subscriber tanpa mengubah kode publisher. Jika ada banyak instance Main app, kita tetap bisa mengelolanya dengan mekanisme komunikasi antar instance. Namun, sinkronisasi notifikasi di antara banyak instance bisa jadi lebih kompleks.
+
+**3. Have you tried to make your own Tests, or enhance documentation on your Postman collection? If you have tried those features, tell us whether it is useful for your work (it can be your tutorial work or your Group Project).**
+
+Saya membuat tes dan meningkatkan dokumentasi pada Postman untuk memverifikasi endpoint dan memastikan respons sesuai harapan. Fitur ini dapat sangat membantu dalam pengujian dan memastikan API berfungsi dengan benar, baik dalam proyek tutorial maupun kelompok.
+
+
+
+
+
+
+
+
